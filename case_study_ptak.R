@@ -27,7 +27,9 @@ head(p)
 
 p$autocytowania = NA
 
-for (j in 1:nrow(p)){
+start = which(p$autocytowania>0)
+start = start[length(start)]
+for (j in start:nrow(p)){
 
   print(j)
   
@@ -37,7 +39,7 @@ for (j in 1:nrow(p)){
 
 # ile razy NA PEWNO bylo autocytowanie?
   ind   = which(grepl(x = tolower(a$authors), pattern = "ptak"))
-  length(ind)
+  print(length(ind))
 
 # a ile razy tytul sie powtarza?
   cytowane =  tolower(a$titles)

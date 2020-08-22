@@ -9,6 +9,10 @@ get_art_citation_list = function(url){
       titles <- rvest::html_text(rvest::html_nodes(wp, '.gs_rt'))
       authors <- rvest::html_text(rvest::html_nodes(wp, '.gs_a'))
       
+      if(length(titles) > length(authors)) {
+        titles = titles[length(authors)]
+      }
+      
       # extra cleaning
       titles = trimws(sub("\\[.*]", "", as.character(titles)))
       df = data.frame(titles, authors)
